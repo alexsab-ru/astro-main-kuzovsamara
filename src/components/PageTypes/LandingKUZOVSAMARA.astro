@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Banner from '@/components/Banner/Banner.astro';
+import Services from '@/components/Services.astro';
+import Contacts from '@/components/Contacts.astro';
+import OnlineCalculation from '@/components/OnlineCalculation/OnlineCalculation.astro';
+import SeoText from '@/components/Seo/Index.astro';
+
+import InfoItem from '@/components/Info/Item.astro';
+const infoItemClasses = "flex flex-col-reverse items-center justify-end gap-5 transition-all shadow-xl hover:shadow-lg font-medium xl:text-lg text-center p-4";
+const infoItems = [
+	{title: "Авто под заказ", icon: "carwheel", url: "/pod-zakaz/", iconClasses: "text-accent-500 size-16"},
+	{title: "Оригинальные масла", icon: "oil", url: "/owners/oils/", iconClasses: "text-accent-500 size-16"},
+	{title: "Тест-драйв", icon: "wheel", url: "/test-drive/", iconClasses: "text-accent-500 size-16"},
+	{title: "Запись на сервис", icon: "engine", url: "/service-request/", iconClasses: "text-accent-500 size-16"},
+];
+
+---
+
+<Layout title=`Кузовные работы в Самаре` description=`Первый официальный кузовной по&nbsp;автомобилям из&nbsp;Китая`>
+	<Banner />
+	<OnlineCalculation />
+
+	<section>
+		<div class="container">
+			<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				{infoItems.map(item => ( <InfoItem item={item} classes={infoItemClasses} data-title="Получить спецпредложение" data-form_name={`Получить спецпредложение. ${item.title.replace(/<[^>]*>/g, '')}`} /> ))}
+			</div>
+		</div>
+	</section>
+
+	<Services />
+
+	<SeoText mdx="index" />
+
+	<Contacts mapImg="https://cdn.alexsab.ru/maps/map-bg.webp" title="Наши контакты" />
+
+</Layout>
