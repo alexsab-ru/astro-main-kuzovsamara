@@ -1,5 +1,6 @@
 import './data.alpine';
 import './modules/scroll';
+import './modules/dropzone';
 import './modules/modals';
 import './modules/latest.posts';
 import './modules/stock-slider';
@@ -11,6 +12,7 @@ import LazyLoader from './modules/LazyLoader';
 import Tooltip from './modules/Tooltip';
 
 import FormsValidation from './modules/FormsValidation';
+import { initFormsWithFiles } from './modules/forms-with-files';
 
 import { connectForms, cookiecook, startNoBounce, initPersistCampaignData } from '@alexsab-ru/scripts';
 
@@ -23,6 +25,10 @@ const waitForDp = setInterval(() => {
 	if (window._dp && window._dp.connectforms_link) {
 		clearInterval(waitForDp);
 		connectForms(window._dp.connectforms_link, {
+			confirmModalText: 'Вы уже оставляли заявку сегодня, с Вами обязательно свяжутся в ближайшее время!',
+			validation: FormsValidation
+		});
+		initFormsWithFiles(window._dp.connectforms_link, {
 			confirmModalText: 'Вы уже оставляли заявку сегодня, с Вами обязательно свяжутся в ближайшее время!',
 			validation: FormsValidation
 		});
