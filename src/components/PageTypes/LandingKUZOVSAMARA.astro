@@ -7,12 +7,17 @@ import OnlineCalculation from '@/components/OnlineCalculation/OnlineCalculation.
 import SeoText from '@/components/Seo/Index.astro';
 
 import InfoItem from '@/components/Info/Item.astro';
-const infoItemClasses = "flex flex-col-reverse items-center justify-end gap-5 transition-all shadow-xl hover:shadow-lg font-medium xl:text-lg text-center p-4";
+const infoItemClasses = "flex flex-col-reverse items-center justify-end gap-5 transition-all shadow-xl hover:shadow-lg font-medium xl:text-lg text-center p-4 popup-link";
 const infoItems = [
-	{title: "Авто под заказ", icon: "carwheel", url: "/pod-zakaz/", iconClasses: "text-accent-500 size-16"},
-	{title: "Оригинальные масла", icon: "oil", url: "/owners/oils/", iconClasses: "text-accent-500 size-16"},
-	{title: "Тест-драйв", icon: "wheel", url: "/test-drive/", iconClasses: "text-accent-500 size-16"},
-	{title: "Запись на сервис", icon: "engine", url: "/service-request/", iconClasses: "text-accent-500 size-16"},
+	{ icon: "warranty", title: "Гарантия на все виды выполненных кузовных работ", url: "#common-modal" },
+	{ icon: "coffee-cup", title: "Для всех клиентов комфортный отдых и уютное кафе", url: "#common-modal" },
+	{ icon: "children", title: "В клиентской зоне оборудована детская комната", url: "#common-modal" },
+	{ icon: "certified", title: "Сертифицированные специалисты", url: "#common-modal" },
+	{ icon: "technical-support", title: "Всегда можно присутствовать при ремонте авто", url: "#common-modal" },
+	{ icon: "quality-control", title: "100% оригинальные запчасти", url: "#common-modal" },
+	{ icon: "repair", title: "Все работы выполняются на самом современном оборудовании", url: "#common-modal" },
+	{ icon: "stock", title: "Четкое объяснение стоимости работ", url: "#common-modal" },
+	{ icon: "taxi", title: "Бесплатное такси", url: "#common-modal" },
 ];
 
 ---
@@ -21,9 +26,11 @@ const infoItems = [
 	<Banner />
 	<OnlineCalculation />
 
-	<section>
+	<section id="advantages">
 		<div class="container">
-			<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+			<h2 class="mb-8">Выгоднее, чем в гараже!</h2>
+			<p class="uppercase text-xl text-center mb-14">Преимущества нашего сервисного центра:</p>
+			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				{infoItems.map(item => ( <InfoItem item={item} classes={infoItemClasses} data-title="Получить спецпредложение" data-form_name={`Получить спецпредложение. ${item.title.replace(/<[^>]*>/g, '')}`} /> ))}
 			</div>
 		</div>
