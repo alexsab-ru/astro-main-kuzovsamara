@@ -73,6 +73,7 @@ const runValidation = async (form, validation) => {
 const appendDropzoneFiles = (formData) => {
 	if (!Array.isArray(window.filesToUpload)) return;
 	window.filesToUpload.forEach((file) => {
+		// если бэкенд ждёт другое имя поля — поменяйте 'file[]'
 		formData.append('file[]', file);
 	});
 };
