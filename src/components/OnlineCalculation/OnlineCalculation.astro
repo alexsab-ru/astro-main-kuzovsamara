@@ -1,10 +1,13 @@
 ---
 import FormSelect from '@/components/FormSelect.astro';
-import salons from '@/data/salons.json';
+import salonsData from '@/data/salons.json';
+import type { ISalon } from '@/types/ISalon';
+const salons = salonsData.filter((salon: ISalon) => !salon?.type || salon?.type.includes('online_modal'));
 import Button from '@/components/Button/Button.astro';
 import Input from '@/components/Input.astro';
 import Checkbox from '@/components/Checkbox/Checkbox.astro';
 import { AGREE_LABEL } from '@/const';
+import FileUpload from '@/components/FileUpload/FileUpload.astro';
 const options = salons.map((salon, idx) => ({ id: idx, name: salon.address }));
 ---
 
@@ -19,15 +22,15 @@ const options = salons.map((salon, idx) => ({ id: idx, name: salon.address }));
 			<div class="grid grid-cols-1 min-[600px]:grid-cols-2 gap-5">
 
 				<Input name="name" classes='border-transparent' placeholder="Ваше имя" />
-				<Input type="tel" name="phone" classes='border-transparent' placeholder="+7 (999) 999-99-99*" required errorClasses='text-yellow-300' />
+				<Input type="tel" name="phone" classes='border-transparent' placeholder="+7 (999) 999-99-99*" required errorClasses='text-red-500' />
 				<FormSelect name="salon" placeholder="Выберите салон" options={options} />
 				<Input name="vin" classes='border-transparent' placeholder="VIN" />
 
 				<div class="min-[600px]:col-span-2">
-					<div class="dropzone file-upload p-0 sm:p-5 bg-white border-2 border-black border-dashed focus:border-accent-500 h-auto cursor-pointer text-black" tabindex="-1"></div>
+					<FileUpload />
 				</div>
 				<div class="min-[600px]:col-span-2">
-					<Checkbox name='agree' label={AGREE_LABEL} required errorClasses='text-yellow-300 w-full' errorText='Чтобы продолжить, установите флажок' />
+					<Checkbox name='agree' label={AGREE_LABEL} required errorClasses='text-red-50 w-full' errorText='Чтобы продолжить, установите флажок' />
 					<input type="checkbox" name="subscribe" class="absolute w-0 h-0 opacity-0 invisible">
 					<Button view="form-button" classes="white mt-5" title="Отправить" />
 				</div>
