@@ -36,10 +36,6 @@ const waitForDp = setInterval(() => {
 			confirmModalText: confirmModalText,
 			validation: FormsValidation
 		});
-		initFormsWithFiles(window._dp.connectforms_link, {
-			confirmModalText: 'Вы уже оставляли заявку сегодня, с Вами обязательно свяжутся в ближайшее время!',
-			validation: FormsValidation
-		});
 	}
 }, 100); // Check every 100ms
 
