@@ -13,7 +13,6 @@ import LazyLoader from './modules/LazyLoader';
 import Tooltip from './modules/Tooltip';
 
 import FormsValidation from './modules/FormsValidation';
-import { initFormsWithFiles } from './modules/forms-with-files';
 
 import { connectForms, cookiecook, startNoBounce, initPersistCampaignData } from '@alexsab-ru/scripts';
 
